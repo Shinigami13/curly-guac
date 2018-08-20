@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+    <img src="desktop/naru.jpg" alt="">
+    <%= image_tag('desktop/naru.jpg', draggable: "true", id: "drag1") %>
+    <img id="drag1" src="<%= asset_path('naru.jpg') %>" draggable="true" ondragstart="drag(event)" width="336" height="69">
+
+  </body>
+</html>

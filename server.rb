@@ -41,7 +41,7 @@ post '/login' do
   user_password = params['password']
   user = User.find_by(email: email)
   if user.password == user_password
-    session[:user] = "#{email}"
+    session[:user] = user
     redirect :account
   else
     p "Invalid credentials"
@@ -50,19 +50,22 @@ post '/login' do
 end
 
 get '/variable' do
-erb :variable
+  erb :variable
+end
+
+get '/variables' do
+  erb :variables
 end
 
 get '/account' do
-  p session[:user]
   erb :account
 end
 
 
 
 get '/logout' do
-    session[:users] = nil
-    p "user has logged out"
+    session[:user] = nil
+    p "user has logged out."
     redirect '/'
   end
 
