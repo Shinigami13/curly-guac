@@ -8,7 +8,7 @@ def full_name
   return @first_name + " " + @last_name
 end
 
-# def birthday
+#defbirthday
   #mm/dd/yyyy
     #month
     #day
@@ -19,7 +19,9 @@ end
   def change
     create_table :users do |t|
       t.string :email
-      t.string :name
+      t.string :full_name
+      t.string :first_name
+      t.string :last_name
       t.string :password_hash
       t.datetime :created_at
       t.datetime :updated_at
@@ -28,15 +30,8 @@ end
   end
 end
 
-class user1
-  include ContactInfo
-end
 
-class admin1
-  include ContactInfo
-end
 
-class
 
 ## THIS IS IMPORTANT THIS IS DATABASES WORK
 ## STUDY THIS

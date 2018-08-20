@@ -19,9 +19,12 @@ end
 post '/signup' do
   p params
   user = User.new(
-name: params['fullname'],
+name: params['full_name'],
 email: params['email'],
-password: params['password']
+password: params['password'],
+first_name: params['first_name'],
+last_name: params['last_name'],
+birthday: params['birthday']
   )
 user.save
 redirect '/'
@@ -29,11 +32,6 @@ end
 
 get '/login' do
   erb :login
-end
-
-get '/variables' do
-p 'In this BITCH!!!'
-erb :variables
 end
 
 post '/login' do
@@ -49,13 +47,6 @@ post '/login' do
   end
 end
 
-get '/variable' do
-  erb :variable
-end
-
-get '/variables' do
-  erb :variables
-end
 
 get '/account' do
   erb :account

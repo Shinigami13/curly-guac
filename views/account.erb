@@ -4,4 +4,5 @@
 <p>No one is logged in</p>
 <% elsif session[:user] != nil %>
   <p>Welcome back, <%= session[:user].name %></p>
+  <p>Your name is, <%= session[:b_day] %></p>
 <% end %>
