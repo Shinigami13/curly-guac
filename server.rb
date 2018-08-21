@@ -19,7 +19,6 @@ end
 post '/signup' do
   p params
   user = User.new(
-name: params['full_name'],
 email: params['email'],
 password: params['password'],
 first_name: params['first_name'],

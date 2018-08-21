@@ -12,7 +12,7 @@
       <li> <a href="/login"> Login </a> </li>
         <% else %>
       <li> <a href="/account"><%= session[:user] %></a></li>
-      <li> <a href="/logout"><%= session[:full_name] %>logout</a></li>
+      <li> <a href="/logout"><%= session[:first_name] %>logout</a></li>
       <% end %>
     </ul>
     <%= yield %>
