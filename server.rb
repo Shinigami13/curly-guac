@@ -1,10 +1,10 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-enable :sessions
+enable  :sessions
 require 'active_record'
+set :database, 'sqlite3:practiceOne.sqlite3'
+#ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
 
-#set :database, 'sqlite3:practiceOne.sqlite3'
-ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
 
 get '/' do
   @users = User.all
@@ -21,7 +21,7 @@ post '/signup' do
   user = User.new(
 email: params['email'],
 password: params['password'],
-first_name: params['first_name'],
+name: params['name'],
 birthday: params['birthday']
   )
 user.save
@@ -47,6 +47,23 @@ end
 
 
 get '/account' do
+  email = params['email']
+  user_password = params['password']
+  user = User.find_by(email: email)
+  if
+    user = User.new(
+    email: params['email'],
+    password: params['password'],
+    first_name: params['name'],
+    birthday: params['birthday']
+    )
+   # title = params['title']
+   # content = params['content']
+   # text = params['text']
+   # user = params['user']
+   # session[:user] = user
+else
+p "You need to log in to make your first post #{/signup}"
   erb :account
 end
 
