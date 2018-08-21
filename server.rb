@@ -6,7 +6,6 @@ enable :sessions
 set :database, 'sqlite3:practiceOne.sqlite3'
 
 get '/' do
-p 'Frank Sinatra is mother fucking running in this BITCH!!!'
   @users = User.all
   p @users
   erb :home
@@ -22,7 +21,6 @@ post '/signup' do
 email: params['email'],
 password: params['password'],
 first_name: params['first_name'],
-last_name: params['last_name'],
 birthday: params['birthday']
   )
 user.save
