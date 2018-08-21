@@ -1,9 +1,8 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-# require 'securerandom'
 enable :sessions
-
 require 'active_record'
+
 #set :database, 'sqlite3:practiceOne.sqlite3'
 ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
 

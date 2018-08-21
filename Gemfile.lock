@@ -49,6 +49,7 @@ DEPENDENCIES
   faker
   pg
   rake
+  sinatra
   sinatra-activerecord
   sqlite3
 
