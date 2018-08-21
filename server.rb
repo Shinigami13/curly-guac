@@ -3,7 +3,9 @@ require 'sinatra/activerecord'
 # require 'securerandom'
 enable :sessions
 
-set :database, 'sqlite3:practiceOne.sqlite3'
+require 'active_record'
+#set :database, 'sqlite3:practiceOne.sqlite3'
+ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
 
 get '/' do
 p 'Frank Sinatra is mother fucking running in this BITCH!!!'
