@@ -34,36 +34,35 @@ end
 
 post '/login' do
   email = params['email']
-  user_password = params['password']
+  upassword = params['password']
   user = User.find_by(email: email)
-  if user.password == user_password
+  if user.password == upassword
     session[:user] = user
     redirect :account
   else
-    p "Invalid credentials"
+    p 'Invalid credentials'
     redirect '/'
   end
 end
 
 
 get '/account' do
-  email = params['email']
-  user_password = params['password']
-  user = User.find_by(email: email)
-  if
-    user = User.new(
-    email: params['email'],
-    password: params['password'],
-    first_name: params['name'],
-    birthday: params['birthday']
-    )
-   # title = params['title']
-   # content = params['content']
-   # text = params['text']
-   # user = params['user']
+  # email = params['email']
+  # user_password = params['password']
+  # user = Posts.find_by(email: email)
+  # if
+  #   user = Posts.new(
+  #   email: params['email'],
+  #   password: params['password'],
+  #   first_name: params['name'],
+  #   birthday: params['birthday']
+  #   )
+   # title = params['title'],
+   # content = params['content'],
+   # text = params['text'],
+   # user = params['user'],
    # session[:user] = user
-else
-p "You need to log in to make your first post #{/signup}"
+# else
   erb :account
 end
 
@@ -71,7 +70,7 @@ end
 
 get '/logout' do
     session[:user] = nil
-    p "user has logged out."
+    p 'user has logged out.'
     redirect '/'
   end
 

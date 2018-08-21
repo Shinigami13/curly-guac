@@ -8,11 +8,11 @@
     <ul>
       <li><a href="/">Home</li>
         <% if session[:user] == nil %>
-      <li> <a href="/signup"> Signup </a> </li>
-      <li> <a href="/login"> Login </a> </li>
+      <li><a href="/signup"> Signup </a></li>
+      <li><a href="/login"> Login </a></li>
         <% else %>
       <li> <a href="/account"><%= session[:user] %></a></li>
-      <li> <a href="/logout"><%= session[:first_name] %>logout</a></li>
+      <li> <a href="/logout"><%= session[:name] %>logout</a></li>
       <% end %>
     </ul>
     <%= yield %>

@@ -4,13 +4,41 @@
 <p>No one is logged in</p>
 <% elsif session[:user] != nil %>
   <p>Welcome back, <%= session[:user].name %></p>
-  <p>Your name is, <%= session[:first_name] %></p>
 <% end %>
 
 
 <h2>Create Post</h2>
-<form action=="/account" method="post">
-<input type="text" >
-<!-- <input type="content"> -->
-<input type="submit" value="Logins">
+<form action="/account" method="post">
+<input type="text"  placeholder="title"><br>
+<input type="content" placeholder="content"><br>
+<input type="submit" value="Create Post">
 <form>
+
+<% if session[:user] == nil %>
+<p>No post to display here</p>
+<% elsif session[:user] != nil %>
+  <p>Here are your posts <%= session[:title] %></p>
+  <p><%= session[:content] %></p>
+  <p><%= session[:user] %></p>
+<% end %>
+
+  <p><%= session[:created_at]%></p>
+  <p>post by <%=session[:user].name %></p>
+  <p><%=session[:content] %></p>
+  <p><%=session[:title] %></p>
+<h2> Display Posts </h2>
+<p><%= %></p>
+<p><%= %></p>
+<p><%= %></p>
+<p><%= %></p>
+
+
+
+
+
+
+
+<% %>
+<% %>
+<% %>
+<% %>
