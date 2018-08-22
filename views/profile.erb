@@ -1,0 +1,8 @@
+<p> <%= session[:user].name%>'s Blog</p>
+
+<h2> Display Posts </h2>
+<p>post by <%= session[:user].name %></p>
+<p><%= session[:title] %></p>
+<p><%= session[:content] %></p>
+
+<p><%=@post.created_at%> me</p>

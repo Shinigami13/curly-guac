@@ -5,10 +5,13 @@ require 'active_record'
 set :database, 'sqlite3:practiceOne.sqlite3'
 #ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
 
+# def full_name
+#   first_name + " " + last_name
+# end
+
 #post/get '/'
 get '/' do
   @users = User.all
-  p @users
   erb :home
 end
 
@@ -22,12 +25,16 @@ end
 
 post '/signup' do
   p params
-  user = User.new(
+  # @user = User.create
+  @user = User.new(
+first_name: params[:first_name],
+last_name: params[:last_name],
 email: params['email'],
 password: params['password'],
 name: params['name'],
 birthday: params['birthday']
   )
+#session[:id] = @user.id
 user.save
 redirect '/'
 end
@@ -60,6 +67,7 @@ title: params['title'],
 content: params['content'],
 )
 @posts.save
+
 redirect '/posts'
 end
 
@@ -76,6 +84,9 @@ end
 #two to make sure,
 
   get '/posts' do
+    @user = User.find(session[:id])
+    @blog = Profile.where(user_id: session[:id])
+    @posts1 = Post.where(user_id: session[:id]).limit(20)
   erb :posts
   p 'am i working?'
   end
@@ -83,7 +94,7 @@ end
   get '/profile' do
     @user = User.find(session[:id])
     @blog = Profile.where(user_id: session[:id])
-    @posts = Post.where(user_id: session[:id]).limit(20)
+    @posts1 = Post.where(user_id: session[:id]).limit(20)
     #or range.reverse?
     erb :profile
   end
@@ -91,8 +102,15 @@ end
 
 #get/post 'delete'
   get '/delete' do
-    erb :delete
-  end
+    @user = User.find(session[:id])
+if params[:password] == @user.upassword
+    User.destroy(session[:id])
+    session.clear
+    redirect '/'
+else
+    redirect '/'
+end
+end
 
   delete '/delete' do
     erb :delete
@@ -100,20 +118,26 @@ end
 
 #
 get '/search' do
+  @posts1 = Post.where(user_id: session[:id]).limit(20)
   erb :search
 end
+
+# def self.search(search)
+# 	where("name LIKE ?", "%#{search}%")
+# 	where("content LIKE ?", "%#{search}%")
+# end
 
 #get '/search/:tag'
 #end
 
-private
-def user_exists?
-    (session[:id] != nil) ? true : false
-end
+# private
+# def user_exists?
+#     (session[:id] != nil) ? true : false
+# end
 
-def current_user
-    User.find(session[:id])
-end
+# def current_user
+#     User.find(session[:id])
+# end
 
 
 require './models'
