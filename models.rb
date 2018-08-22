@@ -1,6 +1,7 @@
   require 'bcrypt'
   class User < ActiveRecord::Base
   include BCrypt
+  has_many :posts
 
   def password
     @password ||= Password.new(password_hash)
@@ -13,3 +14,5 @@
   end
 
  #this is unique information if I have anything to say about it
+class Post < ActiveRecord::Base
+end

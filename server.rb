@@ -5,13 +5,17 @@ require 'active_record'
 set :database, 'sqlite3:practiceOne.sqlite3'
 #ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
 
-
+#post/get '/'
 get '/' do
   @users = User.all
   p @users
   erb :home
 end
 
+post '/' do
+end
+
+#/post/get signup
 get '/signup' do
   erb :signup
 end
@@ -27,7 +31,7 @@ birthday: params['birthday']
 user.save
 redirect '/'
 end
-
+#get/post '/login'
 get '/login' do
   erb :login
 end
@@ -45,33 +49,71 @@ post '/login' do
   end
 end
 
-
+#get/post '/acount'
 get '/account' do
-  # email = params['email']
-  # user_password = params['password']
-  # user = Posts.find_by(email: email)
-  # if
-  #   user = Posts.new(
-  #   email: params['email'],
-  #   password: params['password'],
-  #   first_name: params['name'],
-  #   birthday: params['birthday']
-  #   )
-   # title = params['title'],
-   # content = params['content'],
-   # text = params['text'],
-   # user = params['user'],
-   # session[:user] = user
-# else
   erb :account
 end
 
+post '/account' do
+  @posts = Post.new(
+title: params['title'],
+content: params['content'],
+)
+@posts.save
+redirect '/posts'
+end
 
+#get/post '/logout'
+  get '/logout' do
+      session.clear
+      redirect '/'
+    end
 
-get '/logout' do
-    session[:user] = nil
-    p 'user has logged out.'
-    redirect '/'
+  post '/logout' do
+    redirect '/logout'
   end
+
+#two to make sure,
+
+  get '/posts' do
+  erb :posts
+  p 'am i working?'
+  end
+
+  get '/profile' do
+    @user = User.find(session[:id])
+    @blog = Profile.where(user_id: session[:id])
+    @posts = Post.where(user_id: session[:id]).limit(20)
+    #or range.reverse?
+    erb :profile
+  end
+
+
+#get/post 'delete'
+  get '/delete' do
+    erb :delete
+  end
+
+  delete '/delete' do
+    erb :delete
+  end
+
+#
+get '/search' do
+  erb :search
+end
+
+#get '/search/:tag'
+#end
+
+private
+def user_exists?
+    (session[:id] != nil) ? true : false
+end
+
+def current_user
+    User.find(session[:id])
+end
+
 
 require './models'

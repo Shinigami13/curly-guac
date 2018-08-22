@@ -1,4 +1,3 @@
 require './server'
 require 'sinatra/activerecord/rake'
-require 'active_record'
-
+require 'sinatra/active_record'

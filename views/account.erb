@@ -9,8 +9,8 @@
 
 <h2>Create Post</h2>
 <form action="/account" method="post">
-<input type="text"  placeholder="title"><br>
-<input type="content" placeholder="content"><br>
+<input type="text" name="title" placeholder="title"><br>
+<input type="content" name="content" placeholder="content"><br>
 <input type="submit" value="Create Post">
 <form>
 
@@ -22,16 +22,30 @@
   <p><%= session[:user] %></p>
 <% end %>
 
-  <p><%= session[:created_at]%></p>
-  <p>post by <%=session[:user].name %></p>
-  <p><%=session[:content] %></p>
-  <p><%=session[:title] %></p>
-<h2> Display Posts </h2>
-<p><%= %></p>
-<p><%= %></p>
-<p><%= %></p>
-<p><%= %></p>
 
+<h2> Display Posts </h2>
+<p>post by <%= session[:user].name %></p>
+<p><%= session[:title] %></p>
+<p><%= session[:content] %></p>
+
+
+
+
+posts =
+i want to put the posts into arrays or hashes and sort them by dates?
+i want to put post by date and time
+i want to sort posts by date and time, do i look at a key?
+
+  some sort of array of ...posts...
+
+this is where i start making variables and more complex structures
+range(1..20).reverse
+
+or
+
+use user id's and reverse their order
+
+or
 
 
 
