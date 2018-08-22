@@ -84,7 +84,7 @@ end
 #two to make sure,
 
   get '/posts' do
-    # @user = User.find(session[:user].id)
+    @user = User.find(session[:user].id )
     # @blog = Profile.where(user_id: session[:id])
     @posts1 = Post.all
   erb :posts

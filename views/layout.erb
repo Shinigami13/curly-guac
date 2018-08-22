@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" type="" href="css/main.css">
   </head>
   <body>
     <ul>
@@ -12,7 +13,7 @@
       <li><a href="/login"> Login </a></li>
         <% else %>
       <li> <a href="/account"><%= session[:user] %>profile</a></li>
-      <li><a href="/posts"> Motherfucking Posts!</a></li>
+      <li><a href="/posts">Posts!</a></li>
       <li> <a href="/logout"><%= session[:name] %>logout</a></li>
       <% end %>
     </ul>

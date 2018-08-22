@@ -13,8 +13,8 @@
 <form>
 
 <h2> Show Posts </h2>
-<div>
-<!-- <h1><%#= session[:user].name%>'s Posts</h1> -->
+<div class="">
+<h1><%= session[:user].first_name %>'s Posts</h1>
 <% @posts1.first(20).reverse.each do |var| %>
   <h2><%= var.title %></h2>
   <h2>By: <%= var.content %></h2>
