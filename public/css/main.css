@@ -7,6 +7,8 @@
     margin:1.66%;
     background-color:#1E1E1E;
     overflow:hidden;
+    text-align: center;
+
 }
 
 .content {
@@ -14,12 +16,14 @@
     height:90%; /* = 100% - 2*5% padding */
     width:90%; /* = 100% - 2*5% padding */
     padding: 5%;
-
+  text-align: center;
 }
 .table{
     display:table;
     width:100%;
     height:100%;
+    text-align: center;
+
 }
 .table-cell{
     display:table-cell;
@@ -27,7 +31,7 @@
 }
 /*  For list */
 ul{
-    text-align:left;
+  text-align: center;
     margin:5% 0 0;
     padding:0;
     list-style-position:inside;
@@ -35,11 +39,15 @@ ul{
 li{
     margin: 0 0 0 5%;
     padding:0;
+    list-style-position: inside;
 }
 
 
 /*  For responsive images */
 
+ a{
+   text-align: center;
+ }
 .content .rs{
     width:auto;
     height:auto;
@@ -55,7 +63,7 @@ li{
     color:#fff;
 }
 
-.img_1-1{background-image:url('/naru.jpg');}
+/* .img_1-1{background-image:url('/naru.jpg');}
 .img_1-2{background-image:url('/naru.jpg');}
 .img_1-3{background-image:url('/naru.jpg');}
 
@@ -65,7 +73,7 @@ li{
 
 .img_3-1{background-image:url('/naru.jpg');}
 .img_3-2{background-image:url('/naru.jpg');}
-.img_3-3{background-image:url('/naru.jpg');}
+.img_3-3{background-image:url('/naru.jpg');} */
 
 /*  following just for the demo */
 
@@ -74,13 +82,12 @@ body {
     font-size:20px;
     font-family: 'Lato',verdana, sans-serif;
     color: #fff;
-    text-align:center;
     background:#ECECEC;
 }
 p{
+
     margin:0;
     padding:0;
-    text-align:left;
 }
 
 .numbers{
@@ -97,7 +104,6 @@ p{
     color: #fff;
 }
 #bottom p{
-    text-align:center;
     line-height:2em;
 }
 #bottom a{
@@ -107,6 +113,7 @@ p{
     padding:10px 20px 12px;
     line-height:70px;
     background:#ccc;
+    text-align: center;
 
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
@@ -116,6 +123,7 @@ p{
 #bottom a:hover{
     background:#ECECEC;
     border:1px solid #fff;
+
 }
 
 
@@ -157,5 +165,4 @@ p{
   -webkit-transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
-  text-align: center;
 }

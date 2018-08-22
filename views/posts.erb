@@ -13,5 +13,14 @@
 <form>
 
 <h2> Show Posts </h2>
-<p><%= %></p>
-<p><%== %></p>
+<div>
+<!-- <h1><%#= session[:user].name%>'s Posts</h1> -->
+<% @posts1.first(20).reverse.each do |var| %>
+  <h2><%= var.title %></h2>
+  <h2>By: <%= var.content %></h2>
+  <h2>At: <%= var.created_at %></h2>
+  <h2> var.Content:</h2>
+
+  <a href="/delete/<%= var.id %>"> <button> Delete this post.</button></a>
+ <%end%>
+</div>
