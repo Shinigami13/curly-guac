@@ -12,6 +12,7 @@
       <li><a href="/login"> Login </a></li>
         <% else %>
       <li> <a href="/account"><%= session[:user] %>profile</a></li>
+      <li><a href="/posts"> Motherfucking Posts!</a></li>
       <li> <a href="/logout"><%= session[:name] %>logout</a></li>
       <% end %>
     </ul>

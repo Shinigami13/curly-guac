@@ -26,18 +26,18 @@ end
 post '/signup' do
   p params
   # @user = User.create
-  @user = User.new(
-first_name: params[:first_name],
-last_name: params[:last_name],
+  user = User.new(
+first_name: params['first_name'],
+last_name: params['last_name'],
 email: params['email'],
 password: params['password'],
-name: params['name'],
 birthday: params['birthday']
   )
-#session[:id] = @user.id
+#session[:user].id = @user.id
 user.save
 redirect '/'
 end
+
 #get/post '/login'
 get '/login' do
   erb :login
@@ -64,7 +64,7 @@ end
 post '/account' do
   @posts = Post.new(
 title: params['title'],
-content: params['content'],
+content: params['content']
 )
 @posts.save
 
@@ -84,17 +84,21 @@ end
 #two to make sure,
 
   get '/posts' do
-    @user = User.find(session[:id])
-    @blog = Profile.where(user_id: session[:id])
-    @posts1 = Post.where(user_id: session[:id]).limit(20)
+    @user = User.find(session[:user].id )
+    # @blog = Profile.where(user_id: session[:id])
+    @posts1 = Post.all
   erb :posts
-  p 'am i working?'
   end
 
+put '/posts' do
+@posts1 = Post.where(user_id: session[:user]).limit(20)
+redirect '/posts'
+end
+
   get '/profile' do
-    @user = User.find(session[:id])
-    @blog = Profile.where(user_id: session[:id])
-    @posts1 = Post.where(user_id: session[:id]).limit(20)
+    $user = User.find(session[:id])
+    $blog = Profile.where(user_id: session[:id])
+    $posts = Post.where(user_id: session[:id]).limit(20)
     #or range.reverse?
     erb :profile
   end

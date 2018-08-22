@@ -2,7 +2,7 @@
 
 <h2> Display Posts </h2>
 <p>post by <%= session[:user].name %></p>
-<p><%= session[:title] %></p>
-<p><%= session[:content] %></p>
+<p><%= session[:user].title %></p>
+<!-- <p><%= session[:content] %></p> -->
 
-<p><%=@post.created_at%> me</p>
+<p><%=@post1.created_at%> me</p>

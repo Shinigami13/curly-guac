@@ -3,7 +3,7 @@
 <% if session[:user] == nil %>
 <p>No one is logged in</p>
 <% elsif session[:user] != nil %>
-  <p>Welcome back, <%= session[:user].name %></p>
+  <p>Welcome back, <%= session[:user].first_name %></p>
 <% end %>
 
 

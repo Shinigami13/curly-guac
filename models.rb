@@ -14,5 +14,6 @@
   end
 
  #this is unique information if I have anything to say about it
-class Post < ActiveRecord::Base
-end
+  class Post < ActiveRecord::Base
+  	belongs_to :user
+  end
