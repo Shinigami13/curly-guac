@@ -9,6 +9,7 @@ body {
 }
 ul{
   color: red;
+  text-align: center;
 }
 li{
   text-align: center;
@@ -19,14 +20,31 @@ li{
 
 p{
   color: red;
+  text-align: center;
 }
 
 h1{
   color:red;
+  text-align: center;
+
 }
 h2{
   color: red;
+  text-align: center;
+
 }
 h3{
   color: red;
+  text-align: center;
+}
+div{
+  text-align: center;
+float: right;
+}
+.tumblr-post{
+  display: block;
+  margin-left: auto;
+  margin: right;
+  text-align: center;
+  
 }

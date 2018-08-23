@@ -106,7 +106,7 @@ end
 
 #get/post 'delete'
   get '/delete' do
-    @user = User.find(session[:id])
+    @user = User.find_by(email: params[:email])[:id]
 if params[:password] == @user.upassword
     User.destroy(session[:id])
     session.clear

@@ -1,3 +1,5 @@
+<body style="background-image:url('https://media.giphy.com/media/3o7buijTqhjxjbEqjK/giphy.gif');">
+
 <% @posts1.each do |o| %>
 <p> <% o.content %> </p>
 <% end %>
@@ -5,22 +7,22 @@
 
 
 
-<h2>Create Post</h2>
+<h2 style="color:white;">Create Post</h2>
 <form action="/account" method="post">
 <input type="text" name="title" placeholder="title"><br>
 <input type="content" name="content" placeholder="content"><br>
 <input type="submit" value="Create Post">
 <form>
 
-<h2> Show Posts </h2>
-<div>
+<h2 style="color:white;"> Show Posts </h2>
+<div text-align="center";>
 <!-- <h1><%#= session[:user].name%>'s Posts</h1> -->
 <% @posts1.first(20).reverse.each do |var| %>
-  <h2><%= var.title %></h2>
-  <h2>By: <%= var.content %></h2>
-  <h2>At: <%= var.created_at %></h2>
-  <h2> var.Content:</h2>
+  <h2 style="color:white;"><%= var.title %></h2>
+  <h2 style="color:white;">By: <%= var.content %></h2>
+  <h2 style="color:white;">At: <%= var.created_at %></h2>
+  <h2 style="color:white;"> var.Content:</h2>
 
-  <a href="/delete/<%= var.id %>"> <button> Delete this post.</button></a>
+  <a style="color:white;" href="/delete"> <button> Delete this post.</button></a>
  <%end%>
 </div>
