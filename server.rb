@@ -5,10 +5,6 @@ require 'active_record'
 set :database, 'sqlite3:practiceOne.sqlite3'
 #ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
 
-# def full_name
-#   first_name + " " + last_name
-# end
-
 #post/get '/'
 get '/' do
   @users = User.all
@@ -103,24 +99,24 @@ end
     erb :profile
   end
 
+get "/delete" do
+  erb :delete
+end
 
-#get/post 'delete'
-  get '/delete' do
-    @user = User.find_by(email: params[:email])[:id]
-if params[:password] == @user.upassword
-    User.destroy(session[:id])
+post '/delete' do
+  @user = User.find_by(email: params[:email])#[:id]
+  p @user
+  user = session[:user][:id]
+  p @user.password
+  if params[:email] == @user.email
+    User.destroy(user)
     session.clear
     redirect '/'
-else
+  else
     redirect '/'
-end
-end
-
-  delete '/delete' do
-    erb :delete
   end
+end
 
-#
 get '/search' do
   @posts1 = Post.where(user_id: session[:id]).limit(20)
   erb :search
