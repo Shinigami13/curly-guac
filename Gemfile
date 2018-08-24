@@ -1,16 +1,15 @@
 source 'https://rubygems.org'
 
 gem 'sinatra'
-gem 'faker'
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'rake'
-gem 'bcrypt' 
+gem 'bcrypt'
 
-group :development do 
+group :development do
 gem 'sqlite3'
-end 
+end
 
 group :production do
-gem 'pg' 
+gem 'pg'
 end

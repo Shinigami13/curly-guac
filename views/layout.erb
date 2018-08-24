@@ -5,14 +5,23 @@
     <title></title>
   </head>
   <body>
+
+
+
+
     <ul>
-      <li><a href="/">Home</li>
+      <ul><a href="/">Home</ul>
         <% if session[:user] == nil %>
-      <li> <a href="/signup"> Signup </a> </li>
-      <li> <a href="/login"> Login </a> </li>
+      <ul><a href="/signup"> Signup </a></ul>
+      <ul><a href="/login"> Login </a></ul>
+      <ul><a href="/posts">Posts</a></ul>
+
         <% else %>
-      <li> <a href="/account"><%= session[:user] %></a></li>
-      <li> <a href="/logout">logout</a></li>
+      <ul><a href="/edit">Edit your post</a></ul>
+      <ul><a href="/profile">Edit your profile</a></ul
+      <ul><a href="/account"> <%= session[:user] %>profile</a></ul>
+      <ul><a href="/posts"> Posts</a></ul>
+      <ul><a href="/logout"><%= session[:name] %>logout</a></ul>
       <% end %>
     </ul>
     <%= yield %>

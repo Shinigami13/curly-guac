@@ -1,0 +1,16 @@
+<!--
+<%= form_tag(posts_path, :method => "get", id: "search-form") do %>
+    <%= text_field_tag :search, params[:search], placeholder: "Search Posts" %>
+<%= submit_tag "Search", :name => nil %>
+<% end %>
+
+
+# Search Results
+
+<% if @posts.present? %>
+  <%= render @posts %>
+<% else %>
+  <p>There are no posts containing the word(s) <%= params[:search] %>.</p>
+<% end %>
+-->
+<p><%=$current_user%> me</p>

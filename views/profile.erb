@@ -1,0 +1,20 @@
+<p> <%= session[:user].name%>'s Blog</p>
+
+<h2 style="text-align:center;"> Display Posts </h2>
+<p>post by <%= session[:user].name %></p>
+<p><%= session[:user].title %></p>
+<!-- <p><%= session[:content] %></p> -->
+
+
+<div>
+<h1><%= session[:user].name%>'s Posts</h1>
+<% @posts1.first(20).reverse.each do |var| %>
+  <h2><%= var.title %></h2>
+  <h2>By: <%= var.content %></h2>
+  <h2>At: <%= var.created_at %></h2>
+  <h2> var.Content:</h2>
+ <p><%=  var.content %></p>
+
+ <a href="/postdestroyer/<%= o.id %>"> <button> Delete this post.</button></a>
+</div>
+ <%end%>

@@ -3,71 +3,142 @@ require 'sinatra/activerecord'
 enable :sessions
 require 'active_record'
 
-#set :database, 'sqlite3:practiceOne.sqlite3'
+# set :database, 'sqlite3:practiceOne.sqlite3'
 ActiveRecord::Base.establish_connection(ENV['DATABASE_URL'])
 
+#post/get '/'
 get '/' do
-p 'Frank Sinatra is mother fucking running in this BITCH!!!'
   @users = User.all
-  p @users
   erb :home
 end
 
+post '/' do
+end
+
+#/post/get signup
 get '/signup' do
   erb :signup
 end
 
 post '/signup' do
   p params
+  # @user = User.create
   user = User.new(
-name: params['fullname'],
+first_name: params['first_name'],
+last_name: params['last_name'],
 email: params['email'],
-password: params['password']
+password: params['password'],
+birthday: params['birthday']
   )
+#session[:user].id = @user.id
 user.save
 redirect '/'
 end
 
+#get/post '/login'
 get '/login' do
   erb :login
 end
 
-get '/variables' do
-p 'In this BITCH!!!'
-erb :variables
-end
-
 post '/login' do
   email = params['email']
-  user_password = params['password']
+  upassword = params['password']
   user = User.find_by(email: email)
-  if user.password == user_password
+  if user.password == upassword
     session[:user] = user
     redirect :account
   else
-    p "Invalid credentials"
+    p 'Invalid credentials'
     redirect '/'
   end
 end
 
-get '/variable' do
-  erb :variable
-end
-
-get '/variables' do
-  erb :variables
-end
-
+#get/post '/acount'
 get '/account' do
   erb :account
 end
 
+post '/account' do
+  @posts = Post.new(
+title: params['title'],
+content: params['content']
+)
+@posts.save
 
+redirect '/posts'
+end
 
-get '/logout' do
-    session[:user] = nil
-    p "user has logged out."
+#get/post '/logout'
+  get '/logout' do
+      session.clear
+      redirect '/'
+    end
+
+  post '/logout' do
+    redirect '/logout'
+  end
+
+#two to make sure,
+
+  get '/posts' do
+    # @user = User.find(session[:user].id)
+    # @blog = Profile.where(user_id: session[:id])
+    @posts1 = Post.all
+  erb :posts
+  end
+
+put '/posts' do
+@posts1 = Post.where(user_id: session[:user]).limit(20)
+redirect '/posts'
+end
+
+  get '/profile' do
+    $user = User.find(session[:id])
+    $blog = Profile.where(user_id: session[:id])
+    $posts = Post.where(user_id: session[:id]).limit(20)
+    #or range.reverse?
+    erb :profile
+  end
+
+get "/delete" do
+  erb :delete
+end
+
+post '/delete' do
+  @user = User.find_by(email: params[:email])#[:id]
+  p @user
+  user = session[:user][:id]
+  p @user.password
+  if params[:email] == @user.email
+    User.destroy(user)
+    session.clear
+    redirect '/'
+  else
     redirect '/'
   end
+end
+
+get '/search' do
+  @posts1 = Post.where(user_id: session[:id]).limit(20)
+  erb :search
+end
+
+# def self.search(search)
+# 	where("name LIKE ?", "%#{search}%")
+# 	where("content LIKE ?", "%#{search}%")
+# end
+
+#get '/search/:tag'
+#end
+
+# private
+# def user_exists?
+#     (session[:id] != nil) ? true : false
+# end
+
+# def current_user
+#     User.find(session[:id])
+# end
+
 
 require './models'
